@@ -8,4 +8,4 @@ Technical Indicators App - Documentation
 
 ## Links
 
-- [GitHub Repository](https://github.com/vovan4ikukraine/rsi-widget)
+- [GitHub Repository](https://github.com/vovan4ikukraine/rsi-widget-public)
