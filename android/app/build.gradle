@@ -1,0 +1,108 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace = "com.indicharts.app"
+    compileSdk = 36
+    ndkVersion = "27.0.12077973"
+
+    aaptOptions {
+        ignoreAssetsPattern "!.svn:!.git:!.ds_store:!*.scc:!CVS:!*~"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    flavorDimensions += "env"
+    productFlavors {
+        dev {
+            dimension = "env"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue "string", "app_name", "INDI CHARTS (DEV)"
+        }
+        prod {
+            dimension = "env"
+            resValue "string", "app_name", "INDI CHARTS"
+        }
+    }
+
+    defaultConfig {
+        applicationId = "com.indicharts.app"
+        minSdk = 24
+        targetSdk = 35
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                storeFile file("${keystoreProperties['storeFile']}")
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            // Включить minification для уменьшения размера APK
+            minifyEnabled true
+            shrinkResources true
+            // Использовать release подпись (после настройки keystore)
+            signingConfig = signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+    // Pass API_BASE_URL per flavor. Dev uses dev.env, prod uses prod.env.
+    // Run: flutter run --flavor dev --dart-define-from-file=config/dev.env
+    //      flutter run --flavor prod --dart-define-from-file=config/prod.env
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.tools:desugar_jdk_libs:2.1.4'
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
+    
+    // AndroidX Material for lStar and other Material Design 3 attributes support
+    // Material 1.11.0+ supports Material Design 3 and lStar attribute (requires API 31+)
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    
+    // OkHttp for HTTP requests in widget
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    
+    // Kotlin Coroutines for asynchronous operations
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    
+    // Google Play Core (для Flutter deferred components, опционально)
+    // Если не используете deferred components, можно не добавлять
+    // implementation 'com.google.android.play:core:1.10.3'
+}

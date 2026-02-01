@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="14dp"
+    android:background="@drawable/widget_background">
+
+    <!-- Header with refresh icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp">
+        
+        <TextView
+            android:id="@+id/widget_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="RSI Watchlist"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:letterSpacing="0.02" />
+
+        <TextView
+            android:id="@+id/widget_loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading..."
+            android:textSize="12sp"
+            android:textColor="#FFB74D"
+            android:paddingEnd="8dp"
+            android:visibility="gone" />
+        
+        <ImageButton
+            android:id="@+id/widget_refresh_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_rotate"
+            android:background="@drawable/widget_refresh_button_background"
+            android:contentDescription="Refresh data"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Timeframe selector -->
+    <LinearLayout
+        android:id="@+id/widget_timeframe_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:visibility="gone">
+        
+        <Button
+            android:id="@+id/widget_tf_1m"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:text="1m"
+            android:textSize="11sp"
+            android:textColor="#E0E0E0"
+            android:background="@drawable/widget_button_background"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp"
+            android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/widget_tf_5m"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:text="5m"
+            android:textSize="11sp"
+            android:textColor="#E0E0E0"
+            android:background="@drawable/widget_button_background"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp"
+            android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/widget_tf_15m"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:text="15m"
+            android:textSize="11sp"
+            android:textColor="#E0E0E0"
+            android:background="@drawable/widget_button_background"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp"
+            android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/widget_tf_1h"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:text="1h"
+            android:textSize="11sp"
+            android:textColor="#E0E0E0"
+            android:background="@drawable/widget_button_background"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp"
+            android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/widget_tf_4h"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:text="4h"
+            android:textSize="11sp"
+            android:textColor="#E0E0E0"
+            android:background="@drawable/widget_button_background"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp"
+            android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/widget_tf_1d"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:text="1d"
+            android:textSize="11sp"
+            android:textColor="#E0E0E0"
+            android:background="@drawable/widget_button_background"
+            android:padding="4dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/widget_empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add instruments to Watchlist"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+    <!-- Instruments list -->
+    <ListView
+        android:id="@+id/widget_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="4dp" />
+
+</LinearLayout>
+
+
