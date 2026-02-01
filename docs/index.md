@@ -5,6 +5,7 @@ Technical Indicators App - Documentation
 ## Documentation
 
 - [Privacy Policy](privacy.html)
+- [Request Account Deletion](delete-account.html)
 
 ## Links
 

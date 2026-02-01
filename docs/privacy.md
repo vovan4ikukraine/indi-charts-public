@@ -109,6 +109,7 @@ You have the following rights regarding your personal information:
   - Sign out from the app (removes Firebase authentication)
   - Delete all local data by clearing app cache/data
   - Contact us to request deletion of cloud-stored data
+  - **For detailed instructions**: See our [Account Deletion Guide](delete-account.md)
 
 ### 5.3 Notification Preferences
 - Enable or disable push notifications in app settings
