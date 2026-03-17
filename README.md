@@ -1,5 +1,11 @@
 # INDI CHARTS - Technical Indicators App
 
+## 📲 Download
+
+<a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID](https://play.google.com/store/apps/details?id=com.indicharts.app">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" width="200">
+</a>
+
 [![Flutter](https://img.shields.io/badge/Flutter-3.5+-blue.svg)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.5+-blue.svg)](https://dart.dev)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
